@@ -29,21 +29,29 @@ void init_tests();
 
 int main(int argc, char** argv) {
 	int i;
+	int num_passed = 0;
 
 	init_tests();
 
+	printf("\nRunning DanglOS p_queue Test Suite\n\n");
+
 	for (i = 0; i < N_TESTS; i++) {
+		
 		char* pass = "PASS\0";
 		char* fail = "FAIL\0";
 		char* result = NULL;
+
 		if (test[i].test() == TEST_SUCCESS) {
 			result = pass;
+			num_passed++;
 		} else {
 			result = fail;
 		}
-		printf("[%s] - %s\n", result, (test[i].name));
+		
+		printf("\t[%s] - %s\n", result, (test[i].name));
+	
 	}
-
+	printf("\nPassed %d of %d tests.\n\n", num_passed, N_TESTS);
 	return 0;
 }
 
