@@ -23,7 +23,7 @@ void pq_init(p_queue* pq)
 	pq->size = 0;
 
 
-	for (i = 0; i < N_PRIORITIES; i++) {
+	for ( i = 0; i < N_PRIORITIES; i++ ) {
 		pq->start[i]  = i * N_ELEMS; /* Each priority region in the array is N_ELEMS long */
 		pq->length[i] = 0; 
 	}
