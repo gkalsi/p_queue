@@ -5,15 +5,15 @@ p_queue
 Building Running and Testing
 ----------------------------
 To build the test harness, run
-```
+```bash
 make
 ```
 To run the tests in the compiled test harness, run
-```
+```bash
 ./p_queue
 ```
 To make the test harness and run the accompanying tests, run
-```
+```bash
 make test
 ```
 
@@ -21,14 +21,14 @@ Library Usage
 -------------
 ### Configurable Defines ###
 The following defines can be used to configure the library prior to use
-```
+```c
 #define N_ELEMS    	6		 /* Global Max number of elements in a priority queue */
 #define QUEUE_TYPE 	<Type T> /* Data type of Queue elements */
 #define QUEUE_GUARD -1		 /* Item of Type T, returned when pq_front is called on an empty queue */
 ```
 ### API ###
 By default priorities are stored in a priority enum
-```
+```c
 typedef enum {
 	HIGH 	= 0,
 	MED		= 1,
@@ -38,7 +38,7 @@ typedef enum {
 } priority;
 ```
 The following four methods are defined to interact with a priority queue
-```
+```c
 void pq_init( p_queue* pq );	/* Call before using the PQ */
 
 /* enqueue and dequeue return PQ_SUCCESS and PQ_FAILURE on success and failure respectively */
