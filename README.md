@@ -4,7 +4,7 @@ p_queue
 
 Building Running and Testing
 ----------------------------
-To build the test harness, run
+To compile the test harness, run
 ```bash
 make
 ```
@@ -12,7 +12,7 @@ To run the tests in the compiled test harness, run
 ```bash
 ./p_queue
 ```
-To make the test harness and run the accompanying tests, run
+To compile the test harness and run the accompanying tests, run
 ```bash
 make test
 ```
@@ -27,7 +27,7 @@ The following defines can be used to configure the library prior to use
 #define QUEUE_GUARD -1		 /* Item of Type T, returned when pq_front is called on an empty queue */
 ```
 ### API ###
-By default priorities are stored in a priority enum
+Priorities are defined in a priority enum
 ```c
 typedef enum {
 	HIGH 	= 0,
