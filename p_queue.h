@@ -1,8 +1,6 @@
 #ifndef __DANGLOS_PQUEUE__
 #define __DANGLOS_PQUEUE__
 
-#define PQ_DEBUG 	0
-
 #define N_ELEMS    	6	/* Total number of elements available in the PQ */
 
 #define QUEUE_TYPE 	int /* We don't have templates, this is the type of element in the PQ */
