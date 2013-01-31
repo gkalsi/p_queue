@@ -73,7 +73,7 @@ int pq_dequeue( p_queue* pq )
 			
 			/* calling _pq_compute_offset with an offset of 0 normalizes pq->start in case
 			   it has increased beyond the valid region for this priority */
-			pq->start[i] = _pq_compute_offset( pq, 0, i );
+			pq->start[i] = _pq_compute_offset( pq, 0, (priority)i );
 			pq->size--;
 			return PQ_SUCCESS;
 		}
