@@ -27,9 +27,11 @@ typedef struct {
 
 void pq_init( p_queue* pq );	/* Call before using the PQ */
 
-/* enqueue and dequeue return PQ_SUCCESS and PQ_FAILURE on success and failure respectively */
-int pq_enqueue( p_queue* pq, QUEUE_TYPE val, priority p );	/* add an element with the given priority */
-int pq_dequeue( p_queue* pq );								/* Remove the highest priority elem from the pq */
+/* enqueue, dequeue and move return PQ_SUCCESS and PQ_FAILURE on success and failure respectively */
+int pq_enqueue ( p_queue* pq, QUEUE_TYPE val, priority p );	/* add an element with the given priority */
+int pq_dequeue ( p_queue* pq );								/* Remove the highest priority elem from the pq */
+int pq_move    ( p_queue* pq, QUEUE_TYPE target, priority source, priority dest ); /* Move target item from source priority to dest priority */
+
 
 QUEUE_TYPE pq_front( p_queue* pq );	/* Return the higest priority elem from the pq */ 
 

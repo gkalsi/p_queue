@@ -12,6 +12,15 @@ int _pq_compute_offset( p_queue* pq, int n, priority p )
 	return offset + ( p * N_ELEMS );
 }
 
+/*
+ * swap element i and j in the priority queue
+ */
+void _pq_swap( p_queue* pq, int i, int j )
+{
+	QUEUE_TYPE temp = pq->elems[i];
+	pq->elems[i] = pq->elems[j];
+	pq->elems[j] = temp;
+}
 
 /*
  * prepare a p_queue structure for use
@@ -23,7 +32,8 @@ void pq_init(p_queue* pq)
 	pq->size = 0;
 
 
-	for ( i = 0; i < N_PRIORITIES; i++ ) {
+	for ( i = 0; i < N_PRIORITIES; i++ ) 
+	{
 		pq->start[i]  = i * N_ELEMS; /* Each priority region in the array is N_ELEMS long */
 		pq->length[i] = 0; 
 	}
@@ -63,8 +73,10 @@ int pq_dequeue( p_queue* pq )
 
 	if ( pq->size == 0 ) return PQ_FAILURE;
 
-	for ( i = 0; i < N_PRIORITIES; i++ ) {
-		if (pq->length[i] != 0) {
+	for ( i = 0; i < N_PRIORITIES; i++ ) 
+	{
+		if (pq->length[i] != 0) 
+		{
 
 			/* The valid region becomes smaller but the start location is incremented to 
 			   drop the first element from the queue */
@@ -81,6 +93,27 @@ int pq_dequeue( p_queue* pq )
 	return PQ_FAILURE;
 }
 
+int pq_move(p_queue* pq, QUEUE_TYPE target, priority source, priority dest)
+{
+	int i, j, c;
+
+	for ( i = 0; i < pq->length[source]; i++ ) 
+	{
+		c = _pq_compute_offset( pq, i, source );
+		if (pq->elems[c] == target) 
+		{
+			for ( j = i; j < pq->length[source] - 1; j++ )
+			{
+				pq->elems[_pq_compute_offset( pq, j, source )] = pq->elems[_pq_compute_offset( pq, j + 1, source )]; 
+			}
+			pq->length[source]--;
+			pq->size--;
+			pq_enqueue( pq, target, dest );
+			return PQ_SUCCESS;
+		}
+	}
+	return PQ_FAILURE;
+}
 
 /*
  * Returns the highest priority element from the priority queue
@@ -90,7 +123,8 @@ QUEUE_TYPE pq_front(p_queue* pq)
 {
 	int i;
 
-	for ( i = 0 ; i < N_PRIORITIES; i++ ) {
+	for ( i = 0 ; i < N_PRIORITIES; i++ ) 
+	{
 		if (pq->length[i] != 0) {
 			return pq->elems[ pq->start[i] ];
 		}
