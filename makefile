@@ -14,4 +14,3 @@ test: ${EXEC}
 clean:
 	rm -fr ${OBJECTS}
 	rm -fr ${EXEC}
-

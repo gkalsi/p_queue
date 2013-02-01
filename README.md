@@ -24,7 +24,7 @@ The following defines can be used to configure the library prior to use
 ```c
 #define N_ELEMS    	6		 /* Global Max number of elements in a priority queue */
 #define QUEUE_TYPE 	<Type T> /* Data type of Queue elements */
-#define QUEUE_GUARD -1		 /* Item of Type T, returned when pq_front is called on an empty queue */
+#define PQ_NOT_FOUND -1		 /* Item of Type T, returned when pq_front is called on an empty queue */
 ```
 ### API ###
 Priorities are defined in a priority enum
