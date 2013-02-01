@@ -4,7 +4,7 @@
 #define N_ELEMS    	6	/* Total number of elements available in the PQ */
 
 #define QUEUE_TYPE 	int /* We don't have templates, this is the type of element in the PQ */
-#define QUEUE_GUARD -1	/* Return this if pq_front() is called on an empty queue */
+#define PQ_NOT_FOUND -1	/* Return this if pq_front() is called on an empty queue */
 
 /* Returned by enqueue and dequeue on successful and unsuccessful operations */
 #define PQ_SUCCESS 0

@@ -117,7 +117,7 @@ int pq_move(p_queue* pq, QUEUE_TYPE target, priority source, priority dest)
 
 /*
  * Returns the highest priority element from the priority queue
- * returns QUEUE_GUARD if the action was not successful (the queue was empty)
+ * returns PQ_NOT_FOUND if the action was not successful (the queue was empty)
  */
 QUEUE_TYPE pq_front(p_queue* pq) 
 {
@@ -130,7 +130,7 @@ QUEUE_TYPE pq_front(p_queue* pq)
 		}
 	}
 
-	return QUEUE_GUARD;
+	return PQ_NOT_FOUND;
 }
 
 /*
